@@ -7,7 +7,7 @@ list_oper_3 = ['+', '-']
 
 
 def result(l: str):
-    #print(l)
+    # print(l)
     while '(' in l:
         tag = 0
         start = [0, False]
@@ -51,9 +51,19 @@ def result_without(l: str):
                 mode = 'int'
                 tmp_str = l[i]
     M.append(tmp_str)
+
+    for i in range(len(M)):
+        if (M[i] == "!-") or (M[i] == "**-") or (M[i] == "*-") or (M[i] == "/-") or \
+                (M[i] == "%-") or (M[i] == "//-") or (M[i] == "+-") or (M[i] == "--"):
+            M[i] = M[i][:-1]
+            M[i+1] = str(float(M[i+1]) * (-1))
+
+    print(M)
+
     for i in range(len(M)):
         if M[i][-1] == '!':
             M[i] = str(math.factorial(int(M[i][:-1])))
+
     try:
         for i in range(len(M)):
             if M[i] in list_oper_1:
@@ -96,6 +106,8 @@ def result_without(l: str):
     except IndexError:
         pass
     if len(M) == 1:
+        if (M[0][-1] == '0') and (M[0][-2] == '.'):
+            M[0] = M[0][:-2]
         return M[0]
     else:
         s = ''
@@ -103,7 +115,5 @@ def result_without(l: str):
             s += i
         return result_without(s)
 
-
-
-#print(result("(12!+48*(1+1))+1"))
+# print(result("(12!+48*(1+1))+1"))
 # if (l[i] != '!') and (l[i] != '*') and (l[i] != '/') and (l[i] != '%') and (l[i] != '+') and (l[i] != '-'):

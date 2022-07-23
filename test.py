@@ -5,3 +5,4 @@ l1 = list(l)
 l1[4:11] = "a"
 l = str(l1)
 print(l)
+print(a[0:-1])
