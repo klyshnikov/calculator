@@ -58,8 +58,6 @@ def result_without(l: str):
             M[i] = M[i][:-1]
             M[i+1] = str(float(M[i+1]) * (-1))
 
-    print(M)
-
     for i in range(len(M)):
         if M[i][-1] == '!':
             M[i] = str(math.factorial(int(M[i][:-1])))
