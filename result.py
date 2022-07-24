@@ -65,44 +65,87 @@ def result_without(l: str):
             M[i] = str(math.factorial(int(M[i][:-1])))
 
     try:
-        for i in range(len(M)):
-            if M[i] in list_oper_1:
-                tmp_res = float(M[i - 1]) ** float(M[i + 1])
-                M[i] = str(tmp_res)
-                del M[i - 1]
-                del M[i]
-            elif M[i] in list_oper_2:
-                if M[i] == '*':
-                    tmp_res = float(M[i - 1]) * float(M[i + 1])
+        if "**" in M:
+            for i in range(len(M)):
+                if M[i] == "**":
+                    tmp_res = float(M[i - 1]) ** float(M[i + 1])
                     M[i] = str(tmp_res)
                     del M[i - 1]
                     del M[i]
-                if M[i] == '/':
-                    tmp_res = float(M[i - 1]) / float(M[i + 1])
-                    M[i] = str(tmp_res)
-                    del M[i - 1]
-                    del M[i]
-                if M[i] == '%':
-                    tmp_res = float(M[i - 1]) % float(M[i + 1])
-                    M[i] = str(tmp_res)
-                    del M[i - 1]
-                    del M[i]
-                if M[i] == '//':
-                    tmp_res = float(M[i - 1]) // float(M[i + 1])
-                    M[i] = str(tmp_res)
-                    del M[i - 1]
-                    del M[i]
-            elif M[i] in list_oper_3:
-                if M[i] == '+':
-                    tmp_res = float(M[i - 1]) + float(M[i + 1])
-                    M[i] = str(tmp_res)
-                    del M[i - 1]
-                    del M[i]
-                if M[i] == '-':
-                    tmp_res = float(M[i - 1]) - float(M[i + 1])
-                    M[i] = str(tmp_res)
-                    del M[i - 1]
-                    del M[i]
+        elif ('*' in M) or ('/' in M) or ('%' in M) or ('//' in M):
+            for i in range(len(M)):
+                if M[i] in list_oper_2:
+                    if M[i] == '*':
+                        tmp_res = float(M[i - 1]) * float(M[i + 1])
+                        M[i] = str(tmp_res)
+                        del M[i - 1]
+                        del M[i]
+                    if M[i] == '/':
+                        tmp_res = float(M[i - 1]) / float(M[i + 1])
+                        M[i] = str(tmp_res)
+                        del M[i - 1]
+                        del M[i]
+                    if M[i] == '%':
+                        tmp_res = float(M[i - 1]) % float(M[i + 1])
+                        M[i] = str(tmp_res)
+                        del M[i - 1]
+                        del M[i]
+                    if M[i] == '//':
+                        tmp_res = float(M[i - 1]) // float(M[i + 1])
+                        M[i] = str(tmp_res)
+                        del M[i - 1]
+                        del M[i]
+        elif ('+' in M) or ('-' in M):
+            for i in range(len(M)):
+                if M[i] in list_oper_3:
+                    if M[i] == '+':
+                        tmp_res = float(M[i - 1]) + float(M[i + 1])
+                        M[i] = str(tmp_res)
+                        del M[i - 1]
+                        del M[i]
+                    if M[i] == '-':
+                        tmp_res = float(M[i - 1]) - float(M[i + 1])
+                        M[i] = str(tmp_res)
+                        del M[i - 1]
+                        del M[i]
+        # for i in range(len(M)):
+        #     if M[i] in list_oper_1:
+        #         tmp_res = float(M[i - 1]) ** float(M[i + 1])
+        #         M[i] = str(tmp_res)
+        #         del M[i - 1]
+        #         del M[i]
+        #     elif M[i] in list_oper_2:
+        #         if M[i] == '*':
+        #             tmp_res = float(M[i - 1]) * float(M[i + 1])
+        #             M[i] = str(tmp_res)
+        #             del M[i - 1]
+        #             del M[i]
+        #         if M[i] == '/':
+        #             tmp_res = float(M[i - 1]) / float(M[i + 1])
+        #             M[i] = str(tmp_res)
+        #             del M[i - 1]
+        #             del M[i]
+        #         if M[i] == '%':
+        #             tmp_res = float(M[i - 1]) % float(M[i + 1])
+        #             M[i] = str(tmp_res)
+        #             del M[i - 1]
+        #             del M[i]
+        #         if M[i] == '//':
+        #             tmp_res = float(M[i - 1]) // float(M[i + 1])
+        #             M[i] = str(tmp_res)
+        #             del M[i - 1]
+        #             del M[i]
+        #     elif M[i] in list_oper_3:
+        #         if M[i] == '+':
+        #             tmp_res = float(M[i - 1]) + float(M[i + 1])
+        #             M[i] = str(tmp_res)
+        #             del M[i - 1]
+        #             del M[i]
+        #         if M[i] == '-':
+        #             tmp_res = float(M[i - 1]) - float(M[i + 1])
+        #             M[i] = str(tmp_res)
+        #             del M[i - 1]
+        #             del M[i]
     except IndexError:
         pass
     if len(M) == 1:
